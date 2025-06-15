@@ -1,31 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Responsive Tweet Embed</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tweet by @Temini_0xo</title>
   <style>
     body {
+      margin: 0;
+      background: #f0f2f5;
+      font-family: sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      margin: 0;
-      background: #f5f8fa;
     }
-    .tweet-container {
-      max-width: 90%;
-      width: 550px;
+
+    .tweet-wrapper {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 16px;
+      max-width: 600px;
+      width: 90%;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+    }
+
+    .header {
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    iframe {
+      width: 100%;
+      border: none;
+    }
+
+    @media (max-width: 480px) {
+      .tweet-wrapper {
+        padding: 1rem;
+        border-radius: 12px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="tweet-container">
+  <div class="tweet-wrapper">
+    <div class="header">@Temini_0xo’s Latest Thought 💬</div>
     <blockquote class="twitter-tweet" data-theme="light" data-align="center">
       <a href="https://twitter.com/Temini_0xo/status/1928499809238819225"></a>
     </blockquote>
   </div>
-
   <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </body>
 </html>
