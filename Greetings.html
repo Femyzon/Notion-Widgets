@@ -1,55 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tweet by @Temini_0xo</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tweet Embed</title>
   <style>
     body {
       margin: 0;
+      padding: 0;
       background: #f0f2f5;
       font-family: sans-serif;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
     }
 
     .tweet-wrapper {
       background: white;
-      padding: 1.5rem;
+      padding: 1rem;
       border-radius: 16px;
       max-width: 600px;
-      width: 90%;
+      width: 95%;
       box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+      overflow: auto;
     }
 
-    .header {
-      text-align: center;
-      font-weight: bold;
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
+    .dark body {
+      background: #111;
     }
 
-    iframe {
-      width: 100%;
+    .dark .tweet-wrapper {
+      background: #1e1e1e;
+    }
+
+    .toggle-btn {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      padding: 0.5rem 1rem;
+      background: #444;
+      color: #fff;
       border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      z-index: 10;
     }
 
     @media (max-width: 480px) {
       .tweet-wrapper {
-        padding: 1rem;
+        padding: 0.75rem;
         border-radius: 12px;
       }
     }
   </style>
 </head>
 <body>
+  <button class="toggle-btn" onclick="toggleMode()">Toggle Dark Mode</button>
+
   <div class="tweet-wrapper">
-    <blockquote class="twitter-tweet" data-theme="light" data-align="center">
+    <blockquote class="twitter-tweet" data-theme="light" id="tweetEmbed">
       <a href="https://twitter.com/Temini_0xo/status/1928499809238819225"></a>
     </blockquote>
   </div>
+
   <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <script>
+    let isDark = false;
+
+    function toggleMode() {
+      const tweet = document.getElementById('tweetEmbed');
+      isDark = !isDark;
+      document.body.classList.toggle('dark');
+      tweet.setAttribute('data-theme', isDark ? 'dark' : 'light');
+
+      // Re-render Twitter widget to apply theme
+      twttr.widgets.load();
+    }
+  </script>
 </body>
 </html>
