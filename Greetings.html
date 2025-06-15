@@ -5,17 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Tweet Embed</title>
   <style>
+    :root {
+      --light-bg: #f0f2f5;
+      --dark-bg: #1a1a1a; /* Matches Notion-ish dark */
+    }
+
     body {
       margin: 0;
       padding: 0;
-      background: #f0f2f5;
       font-family: sans-serif;
+      background: var(--light-bg);
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
       transition: background 0.3s ease;
+    }
+
+    body.dark {
+      background: var(--dark-bg);
     }
 
     .tweet-wrapper {
@@ -29,31 +38,41 @@
       transition: background 0.3s ease;
     }
 
-    body.dark {
-      background: #111;
-    }
-
     body.dark .tweet-wrapper {
-      background: #1e1e1e;
+      background: #161616; /* Deep gray */
     }
 
-    .toggle-btn {
+    .toggle-box {
       position: fixed;
       bottom: 1rem;
       right: 1rem;
+      z-index: 10;
+    }
+
+    .toggle-btn {
       padding: 0.5rem 1rem;
       background: #444;
       color: #fff;
       border: none;
       border-radius: 50px;
       cursor: pointer;
-      z-index: 10;
       font-size: 14px;
       opacity: 0.8;
+      transition: opacity 0.2s ease;
     }
 
     .toggle-btn:hover {
       opacity: 1;
+    }
+
+    .collapse-btn {
+      margin-top: 0.5rem;
+      font-size: 12px;
+      background: transparent;
+      color: #ccc;
+      border: none;
+      cursor: pointer;
+      text-decoration: underline;
     }
 
     @media (max-width: 480px) {
@@ -65,7 +84,10 @@
   </style>
 </head>
 <body>
-  <button class="toggle-btn" onclick="toggleMode()">🌓 Toggle Theme</button>
+  <div class="toggle-box" id="toggleBox">
+    <button class="toggle-btn" onclick="toggleMode()">🌓 Toggle Theme</button>
+    <button class="collapse-btn" onclick="hideToggle()">Hide</button>
+  </div>
 
   <div class="tweet-wrapper" id="tweet-container">
     <blockquote class="twitter-tweet" data-theme="light" id="tweetEmbed">
@@ -83,11 +105,15 @@
 
       const tweetContainer = document.getElementById('tweet-container');
       tweetContainer.innerHTML = `
-        <blockquote class="twitter-tweet" data-theme="${isDark ? 'black' : 'light'}">
+        <blockquote class="twitter-tweet" data-theme="${isDark ? 'dark' : 'light'}">
           <a href="https://twitter.com/Temini_0xo/status/1928499809238819225"></a>
         </blockquote>
       `;
       twttr.widgets.load(tweetContainer);
+    }
+
+    function hideToggle() {
+      document.getElementById('toggleBox').style.display = 'none';
     }
   </script>
 </body>
