@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Latest Tweet Widget</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #1e1e1e;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .tweet-wrapper {
+      max-width: 550px;
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    iframe {
+      width: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="tweet-wrapper">
+    <blockquote class="twitter-tweet" data-theme="dark" data-dnt="true">
+      <a href="https://twitter.com/Temini_0xo"></a>
+    </blockquote>
+  </div>
+
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+</body>
+</html>
