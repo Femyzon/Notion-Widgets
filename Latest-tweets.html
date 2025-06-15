@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Latest Tweet Widget</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Latest Tweet</title>
   <style>
     body {
       margin: 0;
@@ -13,29 +13,36 @@
       align-items: center;
       height: 100vh;
     }
-
-    .tweet-wrapper {
-      max-width: 550px;
-      width: 100%;
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
     iframe {
-      width: 100%;
       border: none;
+      width: 100%;
+      max-width: 550px;
+      height: 600px;
     }
   </style>
 </head>
 <body>
 
-  <div class="tweet-wrapper">
-    <blockquote class="twitter-tweet" data-theme="dark" data-dnt="true">
-      <a href="https://twitter.com/Temini_0xo"></a>
-    </blockquote>
-  </div>
+  <iframe id="tweetFrame" 
+    src="https://publish.twitter.com/oembed?url=https://x.com/Temini_0xo/status/1928499809238819225&theme=dark" 
+    style="visibility: hidden;"></iframe>
 
-  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <script>
+    // You can dynamically update this URL to your latest tweet manually if needed
+    const latestTweet = "https://x.com/Temini_0xo/status/1928499809238819225"; // Replace with latest
+
+    // Get Twitter's oEmbed HTML for that tweet
+    fetch(`https://publish.twitter.com/oembed?url=${latestTweet}&theme=dark`)
+      .then(res => res.json())
+      .then(data => {
+        const frame = document.getElementById("tweetFrame");
+        const doc = frame.contentWindow.document;
+        doc.open();
+        doc.write(data.html);
+        doc.close();
+        frame.style.visibility = 'visible';
+      });
+  </script>
 
 </body>
 </html>
