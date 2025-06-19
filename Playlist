@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Playlist</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #1e1e1e;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    iframe {
+      border: none;
+      width: 100%;
+      max-width: 700px;
+      height: 420px;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <iframe 
+    src="https://www.youtube.com/embed/videoseries?list=PLKMN6pumrCD52G6jHH6XfgC1bTjww3VbW" 
+    allow="autoplay; encrypted-media" 
+    allowfullscreen>
+  </iframe>
+
+</body>
+</html>
