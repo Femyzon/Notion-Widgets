@@ -84,11 +84,19 @@
 
   <div class="tweet-wrapper" id="tweet-container">
     <blockquote class="twitter-tweet" data-theme="light">
-      <a href="https://x.com/Temini_0x/status/1949606979204493433"></a>
+      <p lang="en" dir="ltr">New here? This is what I do 👇<br><br>
+        I make Web3 less confusing and more profitable for people who actually want to win.<br><br>
+        ✅ Clear breakdowns (no jargon)<br>
+        ✅ Step-by-step guides that don’t waste your time<br>
+        ✅ Tools that help you earn<br>
+        ✅ Productivity systems (Notion, Excel &amp; more)…</p>
+      — Temini (∞0x) ♉️♊️ (@Temini_0x) 
+      <a href="https://twitter.com/Temini_0x/status/1949606979204493433?ref_src=twsrc%5Etfw">July 27, 2025</a>
     </blockquote>
   </div>
 
   <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
   <script>
     let isDark = false;
 
@@ -97,12 +105,30 @@
       document.body.classList.toggle('dark');
 
       const tweetContainer = document.getElementById('tweet-container');
+
+      // Inject the tweet with correct data-theme
       tweetContainer.innerHTML = `
         <blockquote class="twitter-tweet" data-theme="${isDark ? 'dark' : 'light'}">
-          <a href="https://x.com/Temini_0x/status/1949606979204493433"></a>
+          <p lang="en" dir="ltr">New here? This is what I do 👇<br><br>
+            I make Web3 less confusing and more profitable for people who actually want to win.<br><br>
+            ✅ Clear breakdowns (no jargon)<br>
+            ✅ Step-by-step guides that don’t waste your time<br>
+            ✅ Tools that help you earn<br>
+            ✅ Productivity systems (Notion, Excel &amp; more)…</p>
+          — Temini (∞0x) ♉️♊️ (@Temini_0x) 
+          <a href="https://twitter.com/Temini_0x/status/1949606979204493433?ref_src=twsrc%5Etfw">July 27, 2025</a>
         </blockquote>
       `;
-      twttr.widgets.load(tweetContainer);
+
+      // Reload the Twitter widgets
+      if (window.twttr && twttr.widgets) {
+        twttr.widgets.load(tweetContainer);
+      } else {
+        const script = document.createElement('script');
+        script.src = 'https://platform.twitter.com/widgets.js';
+        script.async = true;
+        document.body.appendChild(script);
+      }
     }
   </script>
 </body>
